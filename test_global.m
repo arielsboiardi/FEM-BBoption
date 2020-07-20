@@ -52,6 +52,11 @@ msh.show_labels
 figure
 M = Mass(msh);
 spy(M)
+title("Mass matrix")
 
 %% Build stiffness matrix
-A_K=Stiff_local(problem,msh,3);
+% A_K=Stiff_loc(problem,3,msh)
+figure
+A = Stiff(problem,msh);
+spy(A)
+title("Stiffness matrix")
