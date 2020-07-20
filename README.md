@@ -8,7 +8,7 @@ In this project the evaluation of a barrier basket option is carried out with FE
 
 - [ ] Fix refinement procedure for non convex domains
 
-- [ ] Appropriete data structure for mesh data
+- [x] Appropriete data structure for mesh data
 
 - [ ] A better way to keep track of boundary conditions
 
