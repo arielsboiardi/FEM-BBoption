@@ -14,7 +14,7 @@ if dim==2
 elseif dim==3
     Tr=delaunayTriangulation([T.Points; midpts]);
 else
-    error("Check your mesh! \n")
+    error("Check your mesh!")
 end
 
 end

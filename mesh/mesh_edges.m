@@ -4,6 +4,8 @@ function E=mesh_edges(T)
 % NOTE: There is a library function that does the same, but I founda it was
 % a useful exercise, also in the perspective of moving to a different data
 % structure
+% NOTE 2: This function is used in the refinement algorithm sinc the
+% library function does not let me exclude non interior elements.
 
 d=numel(T.Points(1,:));  % Geometric dimension of the embedding
 E=[];                   % Fix this efficiency issue

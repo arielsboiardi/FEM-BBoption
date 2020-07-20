@@ -9,4 +9,6 @@ patch('faces',geom.edges,'vertices',geom.vertices,...
 if geom.dim==3
     view(3)
 end
+axis image off
+
 end
