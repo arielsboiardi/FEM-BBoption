@@ -39,3 +39,12 @@ hold on; axis image off;
 show_mesh(T,'FaceColor','w','FaceAlpha',0.5)
 
 Q_max=max(RadEdRat(T))
+
+%% Conversion to tri_mesh
+msh=tri_mesh(T)
+
+figure;
+geom.show('LineWidth',1.5,'EdgeColor','r')
+hold on; axis image off;
+msh.show('FaceAlpha',0.5)
+msh.enum_labels
