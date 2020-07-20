@@ -6,10 +6,22 @@ In this project the evaluation of a barrier basket option is carried out with FE
 
 ### What is missing
 
-- [ ] Fix refinement procedure for non convex domains
-
 - [x] Appropriete data structure for mesh data
 
-- [ ] A better way to keep track of boundary conditions
+- [x] Assembly procedure 
+  
+  - [x] Mass matrix
+  
+  - [x] Stiffness matrix
 
-- [ ] Make computations more memory efficient via sparse matrices
+- [ ] Implement mesh refinement in `tri_mesh`  class
+  
+  - [ ] Build refinement method for the class
+  
+  - [ ] Fix refinement procedure for non convex domains (remove non interior vertices)
+  
+  - [ ] Fix all other usages of refinement
+
+- [ ] Keep track o physical boundaries and boundary conditions in refinement
+
+- [ ] Make data structures more memory efficient via sparse matrices
