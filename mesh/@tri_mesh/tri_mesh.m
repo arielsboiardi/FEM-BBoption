@@ -20,8 +20,20 @@ classdef tri_mesh
             if nargin==1
                 T=varargin{1};
                 if isa(T,'delaunayTriangulation')
-                    nodes=T.Points;
+                    nodes=T.Points;  
                     elems=T.ConnectivityList;
+                    dim=size(nodes,2);
+                    
+                    
+                    if dim==2
+                        % In this case it is possible to extract only
+                        % inteiror elements
+                        interior_triangles=T.isInterior;
+                        elems=elems(interior_triangles,:);
+                    elseif dim==3
+                        warning("Can only triangulate the convex hull :(")
+                    end
+                    
                 else
                     error("Not enough input arguments \n")
                 end
