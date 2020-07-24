@@ -17,7 +17,7 @@ n_elems = size(elems,1);  % Number of elements
 
 % 3D version is in progress
 if dim==3
-    error("3D meshes are not yet supported :( \n")
+    error("3D meshes are not yet supported :(")
 end
 
 % Find set of all edges 

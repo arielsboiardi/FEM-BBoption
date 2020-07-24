@@ -1,6 +1,6 @@
 function N = ref_nodal_basis_fun(idx, x1, x2)
-% ref_nodal_basis_fun cpmputes the nodal basis functions on the reference
-% element
+% ref_nodal_basis_fun computes the nodal basis functions on the reference
+% element in (x1,x2).
 
 switch idx
     case 1
@@ -10,7 +10,7 @@ switch idx
     case 3
         N = x2;
     otherwise
-        error("Selection out of range")
+        error("Index out of range")
 end
 
 end

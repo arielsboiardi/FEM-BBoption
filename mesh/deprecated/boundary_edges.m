@@ -23,7 +23,7 @@ end
 
 % Find set of all edges 
 E=mesh_edges(T);
-n_edges=numel(E(:,1)); % Number of elemedges
+n_edges=numel(E(:,1)); % Number of edges
 
 % Find indices of edges of the mesh that lie on the boundary of the domain
 bdE_indices=false(n_edges,1);   % Logical indexing is used here
@@ -46,10 +46,10 @@ for edx=1:n_edges % Try all edges
     end
 end
 
-% Extract boundary edges from E using the indices quilt in the loop
+% Extract boundary edges from E using the indices built in the loop
 bdE=E(bdE_indices,:);
 
-% If needed find nodes on the boundary: it is sufficient to consider only
+% If asked find nodes on the boundary: it is sufficient to consider only
 % one time every node.
 if nargout==2
     bdV=unique(bdE);

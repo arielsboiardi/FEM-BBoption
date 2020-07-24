@@ -8,19 +8,23 @@ In this project the evaluation of a barrier basket option is carried out with FE
 
 - [x] Appropriete data structure for mesh data
 
+- [x] Appropriete data structure for domain geometry data
+
 - [x] Assembly procedure 
   
   - [x] Mass matrix
   
   - [x] Stiffness matrix
 
+- [x] Transfer meshing procedure to `tri_mesh`.
+
 - [ ] Implement mesh refinement in `tri_mesh`  class
   
   - [ ] Build refinement method for the class
   
-  - [ ] Fix refinement procedure for non convex domains (remove non interior vertices)
+  - [ ] ~~Fix refinement procedure for non convex domains (remove non interior vertices)~~
   
-  - [ ] Fix all other usages of refinement
+  - [x] Fix all other usages of refinement
 
 - [ ] Keep track o physical boundaries and boundary conditions in refinement
 
