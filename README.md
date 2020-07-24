@@ -21,11 +21,11 @@ In this project the evaluation of a barrier basket option is carried out with FE
 - [ ] Implement mesh refinement in `tri_mesh`  class
   
   - [ ] Build refinement method for the class
+  - [ ] Keep track o physical boundaries and boundary conditions in refinement
   
   - [ ] ~~Fix refinement procedure for non convex domains (remove non interior vertices)~~
   
   - [x] Fix all other usages of refinement
 
-- [ ] Keep track o physical boundaries and boundary conditions in refinement
 
 - [ ] Make data structures more memory efficient via sparse matrices
