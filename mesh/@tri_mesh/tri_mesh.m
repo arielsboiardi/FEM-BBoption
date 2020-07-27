@@ -1,9 +1,9 @@
 classdef tri_mesh
-    % tri_mesh class for unstructured triangular mesh os polygonal
-    % geometry. The triangulation is based on the Delaunay triangulation
-    % algorithm implemented in the Qhull library, and can therefore only
-    % triangulate convex geometries. In the case of a non convex geoetry
-    % the the trinagulation covers the convex hull. 
+    % tri_mesh class for triangular mesh of polygonal geometry. 
+    % The triangulation is based on the Delaunay triangulation algorithm 
+    % implemented in the Qhull library, and can therefore only triangulate 
+    % convex geometries. In the case of a non convex geoetry the 
+    % trinagulation covers the convex hull of the domain. 
     % 
     % PROPERTIES:
     % Name
@@ -47,7 +47,7 @@ classdef tri_mesh
                 end
             end
             
-            if nargin==2
+            if nargin==3
                 nodes=varargin{1};
                 elems=varargin{2};
                 PhysBD=varargin{3};

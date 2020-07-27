@@ -1,4 +1,4 @@
-close all; clear; clc
+close all; clear
 addpath(genpath('./'))
 
 %% Define polygonal geometry
@@ -28,35 +28,32 @@ msh=tri_mesh(geom);
 msh.show;
 msh.show_labels;
 
-%% Subdivision of triangles
-% edges_indices=T.edges;
-% midpts=0.5*(T.Points(edges_indices(:,1),:)+T.Points(edges_indices(:,2),:));
-% T=delaunayTriangulation([T.Points; midpts]);
+msh.radedrat
 
-T=splitrefineDM(T);
+%% Subdivision of triangles
+msh=msh.midsplitref;
 
 figure;
 geom.show('LineWidth',1.5,'EdgeColor','r')
 hold on; axis image off;
-show_mesh(T,'FaceColor','w','FaceAlpha',0.5)
-
-
-%% Build tri_mesh object from the delaunayTriangulation T
-msh=tri_mesh(T);
-figure
-geom.show('LineWidth',1.5,'EdgeColor','r')
-msh.show('FaceAlpha',0.5);
+msh.show
 msh.show_labels
 
-%% Build mass matrix
+
+msh.radedrat
+
+%% Assemble mass matrix
 figure
 M = Mass(msh);
 spy(M)
 title("Mass matrix")
 
-%% Build stiffness matrix
+%% Assemble stiffness matrix
 % A_K=Stiff_loc(problem,3,msh)
 figure
 A = Stiff(problem,msh);
 spy(A)
 title("Stiffness matrix")
+
+%% Remove rows of boundary test functions
+
