@@ -15,6 +15,12 @@ classdef problem_data
     %               conditions. Each entry contains the boundary value on
     %               the edge indexed by the correspondig identifier.
     % initV         Initial value, that is the payoff of the option. 
+    %
+    % NOTES:
+    %   - Boundary conditions are parsed in direct order, it is therefore 
+    %   convenient to set up the problem with the simplest to compute and
+    %   approximate boundary conditions at the beginning of the list, and
+    %   the worst at the end. In this way easier BCs will be used. 
     
     properties
         rate        % Riskless fixed interest rate
