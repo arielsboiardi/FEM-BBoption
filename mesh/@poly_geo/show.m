@@ -6,9 +6,13 @@ function show(geom, varargin)
 patch('faces',geom.edges,'vertices',geom.vertices,...
     varargin{1:end})
 
-if geom.dim==3
-    view(3)
-end
+BD_midpts=0.5*(geom.vertices(geom.edges(:,1),:)...
+    + geom.vertices(geom.edges(:,2),:));
+
+BD_labels=arrayfun(@(P) {sprintf('BD%d', P)}, geom.bdid');
+pos=arrayfun(@(n) BD_midpts(:,n), (1:2)', 'UniformOutput', false);
+text(pos{1:end}, BD_labels, 'FontWeight','bold', ...
+    'HorizontalAlignment','center','Color','red');
 axis image off
 
 end
