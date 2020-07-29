@@ -10,14 +10,14 @@ function [DIRnodes, DIRnodes_id,INDnodes] = GRPnodes(msh)
 %   INDnodes: indices of free nodes (only if asked)
 %
 
-[~, ordInd]=sort(msh.PhysBD(:,3),'ascend');
-BD=msh.PhysBD(ordInd,:);
+[~, ordDIR]=sort(msh.PhysBD(:,3),'ascend');
+BD=msh.PhysBD(ordDIR,:);
 
 DIRnodes=BD(1,1:2);
 DIRnodes_id=[BD(1,3), BD(1,3)];
 for idx=1:size(msh.PhysBD,1)
     for jdx=1:2
-        % Parse the matrix BD element by element
+        % Parse the first two collumns of BD element by element
         if nnz(DIRnodes==BD(idx,jdx))==0
             % If the node BD(idx,jdx) has not already been added to
             % DIRnodes
@@ -32,7 +32,7 @@ if nargout==3
     % if the output is required. The aproach of removing rowns and columns
     % e.g. in rmRows.m instead of extracting them allows to avoid computing
     % INDnodes!
-    INDnodes=setdiff(1:size(msh.nodes,1),DIRnodes);
+    INDnodes=setdiff(1:size(msh.nodes,1),DIRnodes, 'stable');
 end
 
 end
