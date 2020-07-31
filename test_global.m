@@ -8,6 +8,7 @@ problem=makePROB('problem1.m');
 % Plot domain
 figure;
 problem.geometry.show('LineWidth',1.5,'EdgeColor','r')
+title("Geometry of the domain")
 
 %% Lets try a triangulation
 msh=tri_mesh(problem.geometry);
@@ -81,13 +82,14 @@ figure
 TO=triangulation(msh.elems, msh.nodes(:,1), msh.nodes(:,2), w0);
 trisurf(TO, 'FaceColor', 'w')
 axis equal
+title("Initial condition")
 
 %% Advance solution in time by theta-method
 warning("Figures will be closed!")
 pause
 close all; clc
 
-for idx=1:Nt-1
+for idx=1:Nt
     w1DIR = DIReval(problem.bdcond, DIR, DIRid, msh, Dt*idx);
     F = -R*w0;
     B = -L*w1DIR;
@@ -99,6 +101,7 @@ for idx=1:Nt-1
     
     trisurf(TO, 'EdgeAlpha',0.3)
     axis equal
+    title(strcat("Solution (doubt it!) at time ", string(Dt*idx)))
     pause(0.1)
 end
 
