@@ -6,6 +6,6 @@ fp=mfilename('fullpath');
 fp=erase(fp, mfilename);
 run(strcat(fp,'/problems/',datafile))
 
-problem=problem_data(r,b,K,Sigma, geom, bdCond, [0,T], initV);
+problem=problem_data(r,b,K,Sigma, geom, bdCond, timeint, initV);
 
 end
