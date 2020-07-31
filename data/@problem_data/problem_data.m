@@ -37,18 +37,18 @@ classdef problem_data
     end
     
     methods
-        function pd=problem_data(rate,b,K,cov_matrix, geometry, bdcond, time, initV)
+        function pd=problem_data(r, b, K, S, geom, bdcond, T, V0)
             % problem_data constructs an instance of the problem_data class
             % from inputs as described above.
             
-            pd.rate = rate;
+            pd.rate = r;
             pd.costofcarry = b;
             pd.strike = K;
-            pd.cov_matrix = cov_matrix;
-            pd.geometry = geometry;
+            pd.cov_matrix = S;
+            pd.geometry = geom;
             pd.bdcond=bdcond;
-            pd.time=time;
-            pd.initV=initV;
+            pd.time=T;
+            pd.initV=V0;
         end
     end
 end
