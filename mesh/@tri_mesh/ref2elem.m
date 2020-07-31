@@ -2,6 +2,8 @@ function B_K = ref2elem(msh,K)
 % ref2elem produces the matrix that deforms the reference element into an
 % element of the physical mesh
 %
+%   B_K = ref2elem(msh,K)
+%
 % Input: 
 %   K: index of the element we want to map 
 %   msh: tri_mesh of which said element is part of
@@ -11,7 +13,7 @@ function B_K = ref2elem(msh,K)
 %
 
 K = msh.elems(K,:); % The element K is the K-th row of the elems matrix;
-% Let p_1, p_2, p_3 be the vertices of K
+% Let p1, p2, p3 be the vertices of K
 p1 = msh.nodes(K(1),:);
 p2 = msh.nodes(K(2),:);
 p3 = msh.nodes(K(3),:);
