@@ -39,11 +39,11 @@ A1=zeros(3,3); A2=zeros(3,3);
 A3=r*Mass_loc(K,msh);
 for idx=1:3
     for jdx=1:3 
-        A1(idx,jdx) = Gauss_quad(@(s1,s2) (D(s1,s2)*GradNK(:,jdx))'*GradNK(:,idx),K_vrts);
-        A2(idx,jdx) = Gauss_quad(@(s1,s2) (b(s1,s2)'*GradNK(:,jdx))*msh.nodal_basis_fun(K,idx,s1,s2), K_vrts);
-        
-%         A1(idx,jdx)=midpts_quad(@(s1,s2) (D(s1,s2)*GradNK(:,jdx))'*GradNK(:,idx),K_vrts);
-%         A2(idx,jdx)=midpts_quad(@(s1,s2) (b(s1,s2)'*GradNK(:,jdx))*msh.nodal_basis_fun(K,idx,s1,s2), K_vrts);
+%         A1(idx,jdx) = Gauss_quad(@(s1,s2) (D(s1,s2)*GradNK(:,jdx))'*GradNK(:,idx),K_vrts);
+%         A2(idx,jdx) = Gauss_quad(@(s1,s2) (b(s1,s2)'*GradNK(:,jdx))*msh.nodal_basis_fun(K,idx,s1,s2), K_vrts);
+%         Same results with Gauss quadrature ad midpts_quad
+        A1(idx,jdx)=midpts_quad(@(s1,s2) (D(s1,s2)*GradNK(:,jdx))'*GradNK(:,idx),K_vrts);
+        A2(idx,jdx)=midpts_quad(@(s1,s2) (b(s1,s2)'*GradNK(:,jdx))*msh.nodal_basis_fun(K,idx,s1,s2), K_vrts);
     end
 end
 
