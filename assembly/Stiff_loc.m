@@ -47,5 +47,5 @@ for idx=1:3
     end
 end
 
-A_K=A1-A2-A3;
+A_K=A1-A2+A3;
 end
