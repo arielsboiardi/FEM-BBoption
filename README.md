@@ -17,6 +17,8 @@ In this project the evaluation of a barrier basket option is carried out with FE
   - [x] Keep track o physical boundaries and boundary conditions in refinement
   - [ ] ~~Fix refinement procedure for non convex domains (remove non interior vertices)~~
   - [x] Fix all other usages of refinement
-- [ ] Mass and stiffness matrix compilation 
-- [ ] Boundary conditions in the system
+- [x] Mass and stiffness matrix compilation 
+- [x] Boundary conditions in the system
+- [ ] Add another refinement algorithm
 - [ ] Make data structures more memory efficient via sparse matrices
+- [ ] Numerical simulations
