@@ -13,7 +13,7 @@ classdef problem_data
     %               corresponding assets scaled by their correlation
     %               factor.
     % geometry      poly_geo object which describes the domain
-    % bdcond         Cella array with function handles to the boundary
+    % bdcond        Cell array with function handles to the boundary
     %               conditions. Each entry contains the boundary value on
     %               the edge indexed by the correspondig identifier.
     % time          Time interval of the problem

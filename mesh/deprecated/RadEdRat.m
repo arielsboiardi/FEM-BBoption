@@ -1,10 +1,12 @@
-function [Q, R, E_min]=RadEdRat(T)
+function [Q, R, E_min]=RadEdRat(msh)
 % RadEdRat computes the radius-to-edge ratio of all simplices of the
-% triangulation T. Optionaloutputs are R, radii of the simplices in T and
+% mesh. Optional outputs are R, radii of the simplices in msh and
 % E_min: minimum edge lenght of simplices in T.
 
 % NOTE: R and E_min are given as optional outputs because they are needed
 % here: maybe usefull write separate functions to compute them?
+
+T=delaunayn
 
 C=T.circumcenter;   % Circumcenters of sall simplices
 [ntria,~]=size(T.ConnectivityList); % ntria number of simplices

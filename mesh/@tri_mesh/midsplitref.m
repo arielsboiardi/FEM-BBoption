@@ -10,15 +10,16 @@ Nvx=size(nodes,1);
 BDedges=sort(msh.PhysBD(:,1:2),2);  % Edges of simplices that lie on the BD
 INedges=setdiff(edges, BDedges, 'rows'); % Interior edges 
 
-% Refine verttices set
+% Refine vertices set
 BDmidpts=0.5*(nodes(BDedges(:,1),:)+nodes(BDedges(:,2),:));
 INmidpts=0.5*(nodes(INedges(:,1),:)+nodes(INedges(:,2),:));
 
+% Refine Delaunay triangulation
 rnodes=[nodes; BDmidpts; INmidpts];
 relems=delaunayn(rnodes,{'Qt','Qz'});
 
 % Update physisical boundaries 
-NBD=size(BDedges,1);
+NBD=size(BDedges,1); % Number of edges on the boundary
 rPhysBD=[];
 for edx=1:NBD
     BDedx=[msh.PhysBD(edx,1), Nvx+edx, msh.PhysBD(edx,3); ...
