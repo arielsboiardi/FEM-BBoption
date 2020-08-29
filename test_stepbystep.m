@@ -3,7 +3,7 @@ clear; clc
 addpath(genpath('./'))
 
 %% Define problem data
-problem=makePROB('problem_test.m');
+problem=makePROB('problem0.m');
 
 % Plot domain
 figure;
@@ -59,7 +59,7 @@ M=rmRows(M,DIR);
 % Discretization parameters
 Nt=100;
 Dt=(problem.time(2)-problem.time(1))/Nt;
-theta=0;
+theta=0.5;
 
 % Matrices for theta-method
 L = M/Dt + (1-theta)*A;
@@ -100,7 +100,7 @@ end
 
 close all; clc
 
-for idx=1:Nt/4
+for idx=1:Nt
     w1DIR = DIReval(problem.bdcond, DIR, DIRid, msh, Dt*(idx));
     F = R*w0;
     B = L*w1DIR;
@@ -108,19 +108,10 @@ for idx=1:Nt/4
     w1 = mergeDIRINDvals(w1DIR, w1IND, IND);
     w0=w1;
     
-%     TO=triangulation(msh.elems, msh.nodes(:,1), msh.nodes(:,2), w0);
-% 
-%     trisurf(TO, 'EdgeAlpha',0.3)
-%     axis equal
-%     title(sprintf("Solution at $t=%f$", Dt*(Nt-idx)),...
-%         'interpreter', 'latex')
-%     pause(0.1)
-end
-
     TO=triangulation(msh.elems, msh.nodes(:,1), msh.nodes(:,2), w0);
 
     trisurf(TO, 'EdgeAlpha',0.3)
     axis equal
-    title(sprintf("Solution at $t=%f$", Dt*(Nt-idx)),...
-        'interpreter', 'latex')
-    print('xport_figure','-dsvg', '-painters')
+    s=sprintf("frames/frame%d", idx);
+    print(s, '-dpng', '-r300')
+end
