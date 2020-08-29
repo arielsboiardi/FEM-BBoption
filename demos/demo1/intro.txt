@@ -1,0 +1,9 @@
+In this demo you will explore what happens moving the strike price.
+The data for the problem are as follows: 
+   r = 0.5 
+   sigma1=sigma2=0.25 
+   rho = 0.7 
+   B1 = 1 
+   B2 = 2
+   T = 1
+   

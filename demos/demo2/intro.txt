@@ -1,0 +1,13 @@
+In this demo we actualize a different payoff
+The data for the problem are as follows: 
+   r = 0.5 
+   K = 1 
+   sigma1=sigma2=0.25 
+   rho = 0.7 
+   B1 = 1 
+   B2 = 2
+   T = 1
+
+The payoff fucntion is
+   VT(s1, s2) = max( max(s1,s2) - K, 0)
+

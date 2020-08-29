@@ -1,0 +1,12 @@
+This demo shows step by step the numerical evaluation of a
+two-asset double-out-barrier european call option with our
+FEM-BBoption library. 
+The data for the problem are as follows: 
+   r = 0.5 
+   K = 1 
+   sigma1=sigma2=0.25 
+   rho = 0.7 
+   B1 = 1 
+   B2 = 2
+   T = 1
+
