@@ -3,7 +3,7 @@ clear; clc
 addpath(genpath('./'))
 
 %% Define problem data
-problem=makePROB('problem1.m');
+problem=makePROB('problem_test.m');
 
 % Plot domain
 figure;
@@ -17,7 +17,11 @@ msh.show_labels;
 
 %% Subdivision of triangles
 for idx=1:4
-msh=msh.midsplitref;
+    if idx>=6
+        warning("Not enough memory for this grid")
+        break
+    end
+    msh=msh.midsplitref;
 end
     
 close
@@ -25,7 +29,7 @@ figure;
 problem.geometry.show('LineWidth',1.5,'EdgeColor','r')
 hold on; axis image off;
 msh.show
-msh.show_labels
+% msh.show_labels
 
 %% Assemble mass matrix
 
@@ -55,17 +59,19 @@ M=rmRows(M,DIR);
 % Discretization parameters
 Nt=100;
 Dt=(problem.time(2)-problem.time(1))/Nt;
-theta=1;
+theta=0;
 
 % Matrices for theta-method
-L = M/Dt + theta*A;
+L = M/Dt + (1-theta)*A;
+R = M/Dt - theta*A;
+
 LIND = rmCols(L,DIR);
 PIND=pinv(LIND);
-R = -M/Dt + (1-theta)*A;
 
 %% Compute initial datum and try to plot it
 w0=INITeval(problem.initV, msh);
-w0(DIR(DIRid==1))=0; 
+w0(DIR(DIRid==1))=0;
+
 
 %% Test INTERPlinear
 % [X,Y]=meshgrid(sort(msh.nodes(:,1)),sort(msh.nodes(:,2)));
@@ -75,7 +81,7 @@ w0(DIR(DIRid==1))=0;
 %         W(xdx,ydx) = INTERPlinear(msh, w0, X(xdx,ydx), Y(xdx,ydx));
 %     end
 % end
-%     
+%      
 % surf(X,Y,W)
 
 %% Plot initial condition 
@@ -94,19 +100,27 @@ end
 
 close all; clc
 
-for idx=1:Nt
+for idx=1:Nt/4
     w1DIR = DIReval(problem.bdcond, DIR, DIRid, msh, Dt*(idx));
-    F = -R*w0;
-    B = -L*w1DIR;
-%     w1IND = LIND\(F+B);
-    w1IND = PIND * (F+B);
+    F = R*w0;
+    B = L*w1DIR;
+    w1IND = PIND * (F - B);
     w1 = mergeDIRINDvals(w1DIR, w1IND, IND);
     w0=w1;
     
-    TO=triangulation(msh.elems, msh.nodes(:,1), msh.nodes(:,2), w0);
-    
-    trisurf(TO, 'EdgeAlpha',0.3)
+%     TO=triangulation(msh.elems, msh.nodes(:,1), msh.nodes(:,2), w0);
+% 
+%     trisurf(TO, 'EdgeAlpha',0.3)
 %     axis equal
-    title(strcat("Solution at time ", string(Dt*(idx))))
-    pause(0.1)
+%     title(sprintf("Solution at $t=%f$", Dt*(Nt-idx)),...
+%         'interpreter', 'latex')
+%     pause(0.1)
 end
+
+    TO=triangulation(msh.elems, msh.nodes(:,1), msh.nodes(:,2), w0);
+
+    trisurf(TO, 'EdgeAlpha',0.3)
+    axis equal
+    title(sprintf("Solution at $t=%f$", Dt*(Nt-idx)),...
+        'interpreter', 'latex')
+    print('xport_figure','-dsvg', '-painters')
