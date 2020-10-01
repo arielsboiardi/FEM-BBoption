@@ -5,13 +5,13 @@ addpath(genpath('./'))
 %% Test solver_FEMBBoption
 
 %Problem data
-problem=makePROB('problem41.m');
+problem=makePROB('problem0.m');
 
 % Mesh generation
 msh=tri_mesh(problem.geometry);
 
 % Mesh refinement
-for idx=1:4
+for idx=1:3
     if idx>=6
         warning("Not enough memory for this grid :(")
         fprintf("I will do 5 refinements instead... \n")
@@ -22,7 +22,7 @@ end
 
 %% Theta-method sovler
 Nt=100;
-theta=0.5;
+theta=0;
 
 opt=solver_options(Nt,theta);
 

@@ -3,7 +3,7 @@ clear; clc
 addpath(genpath('./'))
 
 %% Define problem data
-problem=makePROB('problem0.m');
+problem=makePROB('problem_test.m');
 
 % Plot domain
 figure;
@@ -100,7 +100,7 @@ end
 
 close all; clc
 
-for idx=1:Nt
+for idx=1:0.75*Nt
     w1DIR = DIReval(problem.bdcond, DIR, DIRid, msh, Dt*(idx));
     F = R*w0;
     B = L*w1DIR;
@@ -112,6 +112,5 @@ for idx=1:Nt
 
     trisurf(TO, 'EdgeAlpha',0.3)
     axis equal
-    s=sprintf("frames/frame%d", idx);
-    print(s, '-dpng', '-r300')
+    pause(0.1)
 end
