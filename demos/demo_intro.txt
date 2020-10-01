@@ -1,5 +1,5 @@
 This file contains demos for all numerical exepriments shown in the report. 
     - <strong>Demo 0</strong> : full basic example: geomtry, meshing, matrix
     structure and final reoslution through theta-method. 
-    - <strong>Demo 1</strong> : 
-
+    - <strong>Demo 1</strong> : allows to change the strike price.
+    - <strong>Demo 2</strong> : shows results with a different payoff fucntion.

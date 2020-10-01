@@ -1,7 +1,7 @@
 %% Data for the double barrier basket option pricing
 r=0.05;
 b=0;
-K=1;
+K=0.5;
 sigma=0.25;
 rho=0.7;
 Sigma=[sigma^2, rho*sigma^2; rho*sigma^2 sigma^2];
@@ -15,5 +15,5 @@ bdCond={@(s1,s2, t) 0,...
 T=1;
 timeint=[0,T];
 
-initV=@(s1,s2) max(max(s1, s2)-K, 0);
+initV=@(s1,s2) max((s1+ s2)-K, 0);
 geom=MakeGEOM('trapezoid.m');

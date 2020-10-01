@@ -8,7 +8,7 @@ fl=fileread('demos/demo_intro.txt');
 fprintf(fl)
 
 %% Choice
-demo_choice=input('What demo are you interested in? [0-3]: ');
+demo_choice=input('What demo are you interested in? [0-2]: ');
 switch demo_choice
     case 0
         run('demos/demo0/demo0.m')
